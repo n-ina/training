@@ -14,3 +14,9 @@ class FlyNoWay < FlyBehavior
         p "cannot fly."
     end
 end
+
+class FlyRocketPowered < FlyBehavior
+    def fly()
+        p "Fly with rocket."
+    end
+end
