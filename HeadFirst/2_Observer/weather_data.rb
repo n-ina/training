@@ -1,27 +1,22 @@
-require "./interface.rb"
+require "observer"
 
 class WeatherData
-  include Subject
+  include Observable
+
   attr_accessor :temperature, :humidity, :pressure
 
   def initialize()
-    super()
   end
 
-  def measurementsChanged()
-    notifyObservers();
-  end
-
-  def notifyObservers()
-    @observers.each do |o|
-      o.update(@temperature, @humidity, @pressure)
-    end
+  def add_observer(o)
+    super(o)
   end
 
   def setMeasurements(temperature, humidity, pressure)
     @temperature = temperature
     @humidity = humidity
     @pressure = pressure
-    measurementsChanged()
+    changed
+    notify_observers(self);
   end
 end
