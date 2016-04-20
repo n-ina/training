@@ -15,9 +15,10 @@ class RemoteControl
     @on_commands = []
     @off_commands = []
 
+    no_command = NoCommand.new
     (0..6).each do |i|
-      @on_commands[i] = nil
-      @off_commands[i] = nil
+      @on_commands[i] = no_command
+      @off_commands[i] = no_command
     end
   end
 

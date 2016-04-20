@@ -2,7 +2,7 @@ require './receiver.rb'
 
 # Interface for command
 class Command
-  def initialize(description)
+  def initialize(description = nil)
     @description = description
   end
 
@@ -10,6 +10,12 @@ class Command
   end
 
   def undo_excute
+  end
+end
+
+# Null Object
+class NoCommand < Command
+  def excute
   end
 end
 
