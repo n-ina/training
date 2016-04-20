@@ -4,7 +4,7 @@ class CaffeineBeverage
     boil_water
     brew
     pour_in_cup
-    add_condiments
+    add_condiments if customer_wants_condiments
   end
 
   # abstract method
@@ -20,6 +20,10 @@ class CaffeineBeverage
 
   def pour_in_cup
     p 'pouring in cup...'
+  end
+
+  def customer_wants_condiments
+    true
   end
 end
 
@@ -42,5 +46,11 @@ class Coffee < CaffeineBeverage
 
   def add_condiments
     p 'adding sugar and milk...'
+  end
+
+  def customer_wants_condiments
+    print 'Would you like some sugar and milk in your coffee? (y/n):'
+    str = STDIN.gets
+    str.downcase.start_with?('y')
   end
 end
