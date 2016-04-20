@@ -20,6 +20,8 @@ class RemoteControl
       @on_commands[i] = no_command
       @off_commands[i] = no_command
     end
+
+    @undo_command = no_command
   end
 
   def insert_command(slot, on_command, off_command)
@@ -29,10 +31,16 @@ class RemoteControl
 
   def on_button_pushed(slot)
     @on_commands[slot].excute
+    @undo_command = @on_commands[slot]
   end
 
   def off_button_pushed(slot)
     @off_commands[slot].excute
+    @undo_command = @off_commands[slot]
+  end
+
+  def undo_button_pushed
+    @undo_command.undo
   end
 
   def to_s

@@ -9,13 +9,16 @@ class Command
   def excute
   end
 
-  def undo_excute
+  def undo
   end
 end
 
 # Null Object
 class NoCommand < Command
   def excute
+  end
+
+  def undo
   end
 end
 
@@ -28,6 +31,10 @@ class LightOnCommand < Command
   def excute
     @light.on
   end
+
+  def undo
+    @light.off
+  end
 end
 
 # Command for light off
@@ -38,6 +45,10 @@ class LightOffCommand < Command
 
   def excute
     @light.off
+  end
+
+  def undo
+    @light.on
   end
 end
 
@@ -52,6 +63,10 @@ class StereoOnCommand < Command
     @stereo.load_cd
     @stereo.adjust_volume(11)
   end
+
+  def undo
+    @stereo.off
+  end
 end
 
 # Command for stereo off
@@ -62,5 +77,9 @@ class StereoOffCommand < Command
 
   def excute
     @stereo.off
+  end
+
+  def undo
+    @stereo.on
   end
 end

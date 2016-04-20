@@ -28,6 +28,7 @@ stereo_off = StereoOffCommand.new(stereo)
 remote.insert_command(2, stereo_on, stereo_off)
 
 remote.on_button_pushed(0)
+remote.undo_button_pushed
 remote.on_button_pushed(1)
 remote.off_button_pushed(1)
 remote.on_button_pushed(2)
